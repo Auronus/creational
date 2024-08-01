@@ -32,6 +32,9 @@ public class PersonBuilder {
 
     public Person build() {
         Person person;
+        if (name == null || surname == null) {
+            throw new IllegalStateException("Не заполнены обязательные поля");
+        }
         if (age != null && age.isPresent()) {
             person = new Person(name, surname, age.getAsInt());
         } else {
